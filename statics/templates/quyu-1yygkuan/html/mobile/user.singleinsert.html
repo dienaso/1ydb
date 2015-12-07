@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>分享晒单 - {wc:fun:_cfg("web_name_two")}触屏版</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+	<link href="{G_TEMPLATES_CSS}/mobile/login.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile/top.css">
+	<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+	<script type="text/javascript" charset="utf-8" src="{G_PLUGIN_PATH}/uploadify/jquery.uploadify-3.1.min.js"></script>
+<link rel="stylesheet" href="{G_PLUGIN_PATH}/uploadify/uploadify.css" type="text/css"> 
+
+<!--a-->
+<script type="text/javascript">
+var editurl=Array();
+editurl['editurl']="{G_PLUGIN_PATH}/ueditor/";
+editurl['imageupurl']="{WEB_PATH}/{G_ADMIN_DIR}/ueditor/upimage/";
+editurl['imageManager']="{WEB_PATH}/{G_ADMIN_DIR}/ueditor/imagemanager";
+</script>
+<script type="text/javascript" charset="utf-8" src="{G_PLUGIN_PATH}/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="{G_PLUGIN_PATH}/ueditor/ueditor.all.min.js"></script>
+</head>
+	<script src="http://cdn.staticfile.org/jquery/2.1.1-rc2/jquery.min.js" type="text/javascript"></script>
+	<script src="{G_TEMPLATES_JS}/patch/localResizeIMG.js" charset="utf-8" type="text/javascript"></script>
+	
+    <!-- mobileBUGFix.js 兼容修复移动设备 -->
+	<script src="{G_TEMPLATES_JS}/patch/mobileBUGFix.mini.js" charset="utf-8" type="text/javascript"></script>
+<script>
+//上传文件
+$(function(){
+    $('#sd_file').uploadify({
+    	'auto'     : false,
+    	'removeTimeout' : 1,
+        'swf'      : '{G_PLUGIN_PATH}/uploadify/uploadify.swf',
+        'uploader' : '{WEB_PATH}/member/home/singphotoup',
+        'method'   : 'post',
+		'buttonText' : '选择图片',
+		'buttonImage': '{G_PLUGIN_PATH}/uploadify/select.ng',
+		'width': 120,
+		'height': 30,
+        'multi'    : true,
+		'uploadLimit' : 10,
+		'queueID'         : 'fileQueue',
+        'fileTypeDesc' : 'Image Files',
+        'fileTypeExts' : '*.gif; *.jpg; *.png',
+        'fileSizeLimit' : '500KB',
+
+		'formData'        : {
+			'uid': '{wc:$uid}',			
+			'ushell':'{wc:$ushell}'
+		},	
+		'onUploadSuccess' : function(file, data, response){		
+			$(".fileWarp ul").append(SetImgContent(data));
+			SetUploadFile();
+		}
+    });
+});
+function sdUpload(){
+		$('#sd_file').uploadify('settings','formData',{'typeCode':document.getElementById('id_file').value});
+		$('#sd_file').uploadify('upload','*')
+	}
+//显示上传的图片
+function SetImgContent(data){
+	var sLi = "";
+		sLi += '<li>';
+		sLi += '<img src="{G_UPLOAD_PATH}/' + data + '" width="100" height="100" />';
+		sLi += '<input type="hidden" name="fileurl_tmp[]" value="' + data + '">';
+		sLi += '<a href="javascript:;">删除</a>';
+		sLi += '</li>';
+	return sLi;
+}
+
+//删除上传元素DOM并清除目录文件
+function SetUploadFile(){
+	$(".fileWarp ul li").each(function(l_i){
+		$(this).attr("id", "li_" + l_i);
+	})
+	$(".fileWarp ul li a").each(function(a_i){
+		$(this).attr("rel", "li_" + a_i);
+	}).click(function(){
+		$.get(
+			'{WEB_PATH}/member/home/singdel',
+			{action:"del", filename:$(this).prev().val()},
+			function(){}
+		);
+		$("#" + this.rel).remove();
+	})
+}
+</script>
+
+<body>
+    <div class="h5-1yyg-v1" id="content">
+
+<header class="header">
+<div class="n-header-wrap">
+<div class="backbtn">
+<a href="javascript:;" onclick="history.go(-1)" class="h-count white">
+</a>
+</div>
+<div class="h-top-right ">
+<a href="{WEB_PATH}/mobile/home" class="h-search white"></a>
+</div>
+<div class="n-h-tit"><h1 class="header-logo">分享晒单</h1></div>
+</div>
+</header>
+    </header>
+
+	<section>
+		<div class="registerCon">
+			<form method="post" enctype="multipart/form-data">
+				<ul class="form">
+        	        <li>
+						商品：{wc:$ginfo['title']}
+						<a target="_blank" href="{WEB_PATH}/mobile/mobile/item/{wc:$ginfo['id']}" class="blue">[查看]</a>
+                    </li>
+        	        <li>
+						<input name="title" type="text" placeholder="请填写您的晒单标题" value="">
+                    </li>
+        	        <li>
+						<input name="content" type="text" placeholder="请填写您的晒单内容，不得少于15个汉字。" value="">
+                    </li>
+					<li>
+						晒单图片请拍实物照片，截图不予审核
+					</li>
+					<div style="float:left; width:200px;">
+					<li>
+					<input type="file" />
+					</li>	
+					<div style="width:710px; float:left;"></div>
+					<li>
+						
+					</li>				
+					
+					<div class="fileWarp"><div id="fileQueue"></div><ul></ul></div>
+					<li>
+					<input id="shaitu" name="shaitu" type="hidden" value=""/>
+		
+						<input id="sd_submit" name="submit" type="submit" value="确认添加"/>
+					</li>
+				</ul>
+			</form>
+		</div>
+		<div style="color: red; font-size: 20px; margin-left: 25px;">晒图预览:</div>
+	</section>
+
+<script type="text/javascript">       
+$('input:file').localResizeIMG({
+        width: 300,
+		height:300,
+        quality: 1,
+		
+        success: function (result) {
+            var img = new Image();
+			var myDate = new Date();
+			var tim = myDate.getTime();
+            img.src = result.base64;
+            $('body').append(img);
+            $.ajax({
+                url: 'test.php',
+                type: 'POST',
+                data: {formFile: result.clearBase64,mulu: tim},
+                dataType: 'HTML',
+                timeout: 1000,
+                error: function (result) {
+					
+                  document.getElementById("shaitu").value=tim;
+                },
+                success: function () {
+				
+					document.getElementById("shaitu").value=tim;
+                }
+            });
+        }
+    });    </script>
+<script>
+$(function(){
+	$('#btnMultiple').click(function(){
+		var html = '<li>'+$(this).parent().prev().html()+'</li>';
+		$(this).parent().before(html).before(html).before(html);
+
+		$(this).parent().text('至少上传一个图片');
+	});
+
+	$('#btnSave').click(function(){
+		var imgs = 0;
+		var upload = $('input[name="Filedata[]"]');
+		if (upload) {
+			for (var i=0;i< upload.length; i++) {
+				var tmp = upload.get(i);
+				if (tmp && tmp.files) {
+					imgs += tmp.files.length;
+				}
+			}
+		}
+
+		var title = $('input[name=title]').val();
+		var content = $('input[name=content]').val();
+		if (!title) {
+			alert('标题不能为空！');
+			return false;
+		}
+		if (!title) {
+			alert('内容不能为空！');
+			return false;
+		}
+		if (content.length < 15) {
+			alert('内容不得少于15个字！');
+			return false;
+		}
+		if ( imgs < 1) {
+			alert('请至少上传1张晒单照片！');
+			return false;
+		}
+		if ( imgs > 15) {
+			alert('最多上传15张晒单照片！');
+			return false;
+		}
+		$(this).text('正在提交，请耐心等待。');
+		$('form[enctype="multipart/form-data"]').submit();
+	});
+});
+
+</script>
+
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";
+  Path.Webpath = "{WEB_PATH}";
+
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js');
+</script>
+
+    </div>
+</body>
+</html>

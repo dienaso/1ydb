@@ -1,0 +1,50 @@
+{wc:templates "index","header"}
+{wc:templates "member","top"}	
+<div class="c_person_record">
+<ul class="c_person_list">
+	<li class=""><a href="{WEB_PATH}/member/home/userbuylist" hidefocus="">云购记录</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/singlelist" hidefocus="">我的晒单</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/orderlist" hidefocus="">中奖记录</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/userfufen" hidefocus="">我的夺宝币</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/userbalance" hidefocus="">账户管理</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/commissions" hidefocus="">奖励专区</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/invitefriends" hidefocus="">邀请好友</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/address" hidefocus="">收货地址</a></li>
+</ul>
+<div class="main-content clearfix">
+{wc:templates "member","left"}
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/layout-setUp.css"/>
+<script type="text/javascript">
+$(function(){
+	var A=20;
+	var B=function()
+	{if(A==1){
+		location.replace("{WEB_PATH}/member/home")
+	}else{
+		$("#spanNum").html(A);A--}
+	};setInterval(B,1000)
+})
+</script>
+<div class="R-content">
+	<div class="member-t"><h2>邮箱验证</h2></div>
+	<div class="email_verification_ok">
+		<h4>验证成功</h4>
+		<ul>
+			<li><span>验证成功！</span></li>
+			<li>您现在可以使用您的手机号 <span>{wc:$member['mobile']}</span> 或邮箱账号 <span>{wc:$memberx[0]}</span> 进行登录！</li>
+			<li>您还可以：<a href="{WEB_PATH}">开始{wc:fun:_cfg('web_name_two')}</a> <a href="{WEB_PATH}/member/home">去个人中心首页</a></li>
+			<li>如没有任何操作，系统将在 <span id="spanNum"></span> 秒后自动跳转到个人中心首页！</li>
+		</ul>
+	</div>
+</div>
+		
+</div>
+		</div>
+	</div>
+<!--center_center_end-->
+<div class="right">				
+</div>
+<!--center_rjght_end-->
+
+</div>
+{wc:templates "index","footer"}

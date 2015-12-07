@@ -1,0 +1,150 @@
+﻿{wc:templates "index","header"}
+{wc:templates "member","top"}	
+<div class="c_person_record">
+<ul class="c_person_list">
+	<li class=""><a href="{WEB_PATH}/member/home/userbuylist" hidefocus="">云购记录</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/singlelist" hidefocus="">我的晒单</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/orderlist" hidefocus="">中奖记录</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/userfufen" hidefocus="">我的夺宝币</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/userbalance" hidefocus="">账户管理</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/commissions" hidefocus="">奖励专区</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/invitefriends" hidefocus="">邀请好友</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/address" hidefocus="">收货地址</a></li>
+</ul>
+<div class="main-content clearfix">
+{wc:templates "member","left"}
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/layout-recharge.css"/>
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_CSS}/card.css"/>
+<script>
+$(function(){
+	var je=$("#ulMoneyList li");
+	var dx=/\D/;
+	je.click(function(){
+		je.removeClass("selected");
+		je.find("input").removeAttr("checked");
+		var radio=je.index(this);
+			je.eq(radio).find("input").attr('checked','checked');
+			je.eq(radio).addClass("selected");
+		var valx=je.eq(radio).find("input").val();
+		$("#Money").text(valx);
+		$("#hidMoney").val(valx);
+	});
+	var tel=$("#txtOtherMoney").val();
+	$("#txtOtherMoney").keyup(function(){	
+		if(dx.test($("#txtOtherMoney").val())){
+			$("#txtOtherMoney").val(tel);			
+		}else{
+			tel=$("#txtOtherMoney").val();
+		}
+		$("#Money").text(tel);
+		$("#hidMoney").val(tel);
+	}); 
+})
+</script>
+<style type="text/css">
+.total{margin-top: 10px;
+background: #fffce2;
+line-height: 20px;
+border: #fd9 1px solid;
+padding: 10px 20px;
+overflow: hidden;
+color: #666;
+zoom: 1;}
+.Apply-con dt {
+width: 100px;
+line-height: 27px;
+color: #666;
+margin-right: 5px;
+float: left;
+text-align: right;
+}
+.Apply-con dd {
+width: 500px;
+float: left;
+line-height: 27px;
+}
+.recharge {
+width: 750px;
+padding-left: 30px;
+}
+.Apply-con {
+margin-top: 20px;
+}
+.Apply-con dl {
+display: inline-block;
+margin-top: 10px;
+height: 29px;
+overflow: hidden;height: 57px;
+}
+.Apply-con .inp-money {
+width: 73px;
+vertical-align: middle;
+margin-right: 5px;
+}
+.Apply-con .inp-money, .Apply-con .input-txt {
+height: 27px;
+line-height: 25px;
+padding: 0 3px;
+border-left: 1px solid #C2C2C2;
+border-top: 1px solid #C2C2C2;
+border-right: 1px solid #E1E1E1;
+border-bottom: 1px solid #E1E1E1;
+font-size: 14px;
+vertical-align: middle;
+display: block;
+float: left;
+}
+</style>
+
+<div class="R-content">
+	<div class="subMenu">
+                <a href="{WEB_PATH}/member/home/userrecharge" title="网银充值" class="current2">网银充值</a>
+                <a href="{WEB_PATH}/member/home/userrechargedk" title="点卡充值" class="current">点卡充值</a>
+    </div>
+	<div class="R-content">
+<br/>
+
+<br/>
+<div style="margin-left: 300px;" class="recharge-card">
+			<form action="{WEB_PATH}/cardrecharge/cardrcg/" method="post">
+            	<ul>
+                	<li><label>充值卡号：</label><input style="color: rgb(187, 187, 187);" id="txtCZMoney" value="" maxlength="30" type="text" name="code" class="inp-money" /></li>
+                    <li class="z-error"></li>
+                    <li><label>充值密码：</label><input style="color: rgb(187, 187, 187);" id="txtCZPwd" value="" maxlength="10" type="text" name="codepwd" class="inp-money" /></li>
+                    <li class="z-error"></li>
+                    <li id="liMoney" class="mat10">&nbsp;</li>
+                    <li><input type="submit" name="recharge" id="btnSQCZ" class="bluebut" title="充值" value="立即充值"></li>
+                </ul>
+			</form>
+            </div>
+</div>
+</div>
+
+<script>
+$(function(){
+		
+	$("#submit_ok").click(function(){	
+		if(!this.cc){
+			this.cc = 1;		
+			return true;
+		}else{		
+			return false;
+		}		
+		return false;
+	});
+	
+	$(".yeepay_click li>img").click(function(){			
+			$(this).prev().attr("checked",'checked');
+	});
+
+});
+</script>
+		</div>
+	</div>
+<!--center_center_end-->
+<div class="right">				
+</div>
+<!--center_rjght_end-->
+
+</div>
+{wc:templates "index","footer"}

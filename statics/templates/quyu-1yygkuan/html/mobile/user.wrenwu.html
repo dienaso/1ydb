@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{wc:$webname}</title>
+    <meta content="app-id=518966501" name="apple-itunes-app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_IMAGE}/mobile/touch-icon.png" rel="apple-touch-icon-precomposed" />
+    <link href="favicon.ico" rel="shortcut icon" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+	<link href="{G_TEMPLATES_CSS}/mobile/index.css" rel="stylesheet" type="text/css" />
+	<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+	<script id="pageJS" data="{G_TEMPLATES_JS}/mobile/Index.js" language="javascript" type="text/javascript"></script>
+	<link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile/top.css">
+</head>
+<body>
+<div class="h5-1yyg-v1" id="loadingPicBlock">    
+
+<header class="header">
+<div class="n-header-wrap">
+<div class="backbtn">
+<a href="javascript:;" onclick="history.go(-1)" class="h-count white">
+</a>
+</div>
+<div class="h-top-right ">
+<a href="{WEB_PATH}/mobile/home" class="h-search white"></a>
+</div>
+<div class="n-h-tit"><h1 class="header-logo">任务中心</h1></div>
+</div>
+</header>
+
+<!-- 内页顶部 -->
+
+    <input name="hidStartAt" type="hidden" id="hidStartAt" value="0" />
+    <!-- 小导航 -->
+    </br></br></br>
+	<section class="g-main">
+		    <ul class="m-lott-lipro">
+			        <li>
+		                <a href="{WEB_PATH}/mobile/home/qiandao" class="u-lott-pic">
+		                    <img src="{G_TEMPLATES_IMAGE}/task1.png" alt="" border="0">
+		                </a>
+		                <span><a href="{WEB_PATH}/mobile/home/qiandao">每日签到</a></span>
+			        </li>
+				<li>
+		                <a href="{WEB_PATH}/mobile/home/userrecharge" class="u-lott-pic">
+		                    <img src="{G_TEMPLATES_IMAGE}/task5.png" alt="" border="0">
+		                </a>
+		                <span><a href="{WEB_PATH}/mobile/home/userrecharge">充值抽奖</a></span>
+			        </li>
+					 <li>
+		                <a href="{WEB_PATH}/mobile/home/invite" class="u-lott-pic">
+		                    <img src="{G_TEMPLATES_IMAGE}/task4.png" alt="" border="0">
+		                </a>
+		                <span><a href="{WEB_PATH}/mobile/home/invite">推广赚钱</a></span>
+			        </li>
+					 <li>
+		                <a href="#" class="u-lott-pic">
+		                    <img src="{G_TEMPLATES_IMAGE}/task3.png" alt="" border="0">
+		                </a>
+		                <span><a href="#">关注微信</a></span>
+			        </li>
+					<li>
+		                <a href="#" class="u-lott-pic">
+		                    <img src="{G_TEMPLATES_IMAGE}/task6.png" alt="" border="0">
+		                </a>
+		                <span><a href="#">转发微博</a></span>
+			        </li>
+					<li>
+		                <a href="#" class="u-lott-pic">
+		                    <img src="{G_TEMPLATES_IMAGE}/task8.png" alt="" border="0">
+		                </a>
+		                <span><a href="#">下载APP</a></span>
+			        </li>
+					<li>
+		                <a href="#" class="u-lott-pic">
+		                    <img src="{G_TEMPLATES_IMAGE}/task7.png" alt="" border="0">
+		                </a>
+		                <span><a href="{WEB_PATH}/mobile/mobile/glist">关注空间</a></span>
+			        </li>
+					<li>
+		                <a href="{WEB_PATH}/mobile/home" class="u-lott-pic">
+		                    <img src="{G_TEMPLATES_IMAGE}/task2.png" alt="" border="0">
+		                </a>
+		                <span><a href="{WEB_PATH}/mobile/home">完善资料</a></span>
+			        </li>
+		    </ul>
+		
+    </section>
+
+
+    
+
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  
+    var Base = {
+        head: document.getElementsByTagName("head")[0] || document.documentElement,
+        Myload: function(B, A) {
+            this.done = false;
+            B.onload = B.onreadystatechange = function() {
+                if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                    this.done = true;
+                    A();
+                    B.onload = B.onreadystatechange = null;
+                    if (this.head && B.parentNode) {
+                        this.head.removeChild(B)
+                    }
+                }
+            }
+        },
+        getScript: function(A, C) {
+            var B = function() {};
+            if (C != undefined) {
+                B = C
+            }
+            var D = document.createElement("script");
+            D.setAttribute("language", "javascript");
+            D.setAttribute("type", "text/javascript");
+            D.setAttribute("src", A);
+            this.head.appendChild(D);
+            this.Myload(D, B)
+        },
+        getStyle: function(A, B) {
+            var B = function() {};
+            if (callBack != undefined) {
+                B = callBack
+            }
+            var C = document.createElement("link");
+            C.setAttribute("type", "text/css");
+            C.setAttribute("rel", "stylesheet");
+            C.setAttribute("href", A);
+            this.head.appendChild(C);
+            this.Myload(C, B)
+        }
+    }
+    function GetVerNum() {
+        var D = new Date();
+        return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0': D.getMinutes().toString().substring(0, 1))
+    }
+    Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v=' + GetVerNum());
+</script>
+
+</div>
+</body>
+</html>

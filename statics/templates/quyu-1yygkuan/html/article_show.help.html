@@ -1,0 +1,28 @@
+{wc:templates "index","header"}
+<div class="c_guide_content c_guide_this">
+			
+
+<!-- 新手指南导航 -->
+
+<div class="c_guide_left c_guide_this">
+{wc:getlist sql="select * from `@#_category` where `parentid`='1'" return="category"}
+{wc:loop $category $help}
+	<div class="c_newbie_guide">
+		<h4>{wc:$help['name']}</h4>
+		<ul>
+			{wc:fun:help($help['cateid'])}
+		</ul>
+</div>
+{wc:loop:end}
+{wc:getlist:end}
+	</div>
+<!-- 常见问题右侧 -->
+	<div class="c_guide_right c_guide_this">
+		<h2 class="c_know_cluod">{wc:$article['title']}</h2>
+			<div class="c_guide_list c_common_question service_agreement" style="padding-bottom:700px;">
+					{wc:$article['content']}	
+		</div>
+
+</div>
+</div>
+{wc:templates "index","footer"}

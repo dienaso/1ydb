@@ -1,0 +1,1 @@
+<?php  return array("version"=>"V6.0.0","release"=>"2015.10.1"); ?>

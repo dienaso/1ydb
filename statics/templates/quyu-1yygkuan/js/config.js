@@ -1,0 +1,1 @@
+bdyt_require.config({deps:["main"],urlArgs:"bust="+Math.ceil(new Date/36e5),paths:{jquery:"libs/jquery",text:"libs/text",template:"../template","css-style":"../css-style",css:"libs/css",normalize:"libs/normalize","css-builder":"libs/css-builder",backbone:"libs/backbone",underscore:"libs/underscore"},config:{text:{useXhr:function(e,t,n,r){return!0}}},waitSeconds:0});

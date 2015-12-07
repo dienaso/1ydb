@@ -1,0 +1,43 @@
+{wc:templates "index","header"}
+{wc:templates "member","top"}	
+<div class="c_person_record">
+<ul class="c_person_list">
+	<li class=""><a href="{WEB_PATH}/member/home/userbuylist" hidefocus="">云购记录</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/singlelist" hidefocus="">我的晒单</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/orderlist" hidefocus="">中奖记录</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/userfufen" hidefocus="">我的夺宝币</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/userbalance" hidefocus="">账户管理</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/commissions" hidefocus="">奖励专区</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/invitefriends" hidefocus="">邀请好友</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/address" hidefocus="">收货地址</a></li>
+</ul>
+<div class="main-content clearfix">
+{wc:templates "member","left"}
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/layout-setUp.css"/>
+<div class="R-content">
+	<div class="member-t"><h2>邮箱验证</h2></div>
+	<div class="email_verification_ok">
+		<h4>验证成功</h4>
+		<ul>
+			<li><span>发送成功！</span></li>
+			<li>{wc:fun:_cfg('web_name_two')}已经发送了一封验证邮件到您的邮箱{wc:$email}</li>
+			<li>请尽快登录您的邮箱点击验证链接，完成邮箱验证</li>
+		</ul>
+		<p class="not">没有收到邮件？</p>
+		<p>1.请检查您的垃圾箱或广告箱，邮件有可能被误认为垃圾或广告邮件；或选择
+		<a class="orangebut" href="javascript:location.reload();" >重发验证邮件</a>
+		</p>
+		<p>2.若您的邮箱已过期或忘记密码无法登录，请拨打客服电话:{wc:fun:_cfg("cell")}申诉更换验证邮箱。</p>
+	</div>
+</div>
+		
+</div>
+		</div>
+	</div>
+<!--center_center_end-->
+<div class="right">				
+</div>
+<!--center_rjght_end-->
+
+</div>
+{wc:templates "index","footer"}

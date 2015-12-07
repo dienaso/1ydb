@@ -1,0 +1,30 @@
+#pageflip{right:0px;position:fixed;top:0px;z-index:999;}
+  #pageflip img{z-index: 99;right: 0px;width: 50px;position: absolute;top: 0px;height: 52px;ms-interpolation-mode: bicubic;}
+  .msg_block{right:0px;width:50px;position:absolute;overflow:hidden;top:0px;background:url(statics/templates/quyu-1yygkuan/images/sijiao/page_flip.png) no-repeat right top;height:50px}
+  .yNavIndex .yMenuIndex .look_index_nav{position: relative;width: 120px;padding: 0px 40px 0px 0px;}
+  .yNavIndex .yMenuIndex .look_index_nav a.look_index_nava{color:#ec610c;position:relative;}
+  .yNavIndex .yMenuIndex .look_index_nav:hover a.look_index_nava{display: block; margin-top:-6px; margin-left:-5px; padding: 5px 0px 5px 15px; overflow: hidden; background-color: #fff; border: 1px solid #ddd; border-bottom: 0; box-shadow: 0 2px 4px #ccc; width: 88px;}
+  .yNavIndex .yMenuIndex .look_index_nav a.look_index_nava:hover{font-weight: normal;}
+  .yNavIndex .yMenuIndex .look_index_nav dl {position: absolute; z-index: 10; width: 162x; left: -5px; background: #fff; border: 1px solid #ddd; box-shadow: 0 2px 4px #ccc;border-top: 0; padding: 10px 0 10px 0;top: 33px;display:none;}
+    .yNavIndex .yMenuIndex .look_index_nav dl dd a{color: #8d8d8d;display:block;padding-right:0px;width:142px;}
+     .yNavIndex .yMenuIndex .look_index_nav dl dd a:hover{border:0px;font-weight: normal;color:#666;background:#f3f3f3;}
+     .yNavIndex .yMenuIndex .look_index_nav:hover dl{display:block;}
+
+     .ico-dot {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #db3652;
+    box-shadow: 0px 0px 0 rgba(219,54,82,0);
+    -webkit-animation: breath 0.8s 3 ease-in-out;
+    -moz-animation: breath 0.8s 3 ease-in-out;
+    -o-animation: breath 0.8s 3 ease-in-out;
+    -ms-animation: breath 0.8s 3 ease-in-out;
+    animation: breath 0.8s 3 ease-in-out;
+     top: 2px;
+    left: 84px;
+  }
+  .yNavIndex .yMenuIndex .look_index_nav:hover a.look_index_nava .ico-dot{display:none;}
+  @-webkit-keyframes breath{0%{box-shadow:0px 0px 0 rgba(219,54,82,0);}50%{box-shadow:0px 0px 5px rgba(219,54,82,1);}100%{box-shadow:0px 0px 0 rgba(219,54,82,0);}}@-moz-keyframes breath{0%{box-shadow:0px 0px 0 rgba(219,54,82,0);}50%{box-shadow:0px 0px 5px rgba(219,54,82,1);}100%{box-shadow:0px 0px 0 rgba(219,54,82,0);}}@-o-keyframes breath{0%{box-shadow:0px 0px 0 rgba(219,54,82,0);}50%{box-shadow:0px 0px 5px rgba(219,54,82,1);}100%{box-shadow:0px 0px 0 rgba(219,54,82,0);}}@-ms-keyframes breath{0%{box-shadow:0px 0px 0 rgba(219,54,82,0);}50%{box-shadow:0px 0px 5px rgba(219,54,82,1);}100%{box-shadow:0px 0px 0 rgba(219,54,82,0);}}@keyframes breath{0%{box-shadow:0px 0px 0 rgba(219,54,82,0);}50%{box-shadow:0px 0px 5px rgba(219,54,82,1);}100%{box-shadow:0px 0px 0 rgba(219,54,82,0);}}

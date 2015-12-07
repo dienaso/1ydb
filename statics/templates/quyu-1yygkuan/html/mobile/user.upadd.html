@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>收货地址 - {wc:$webname}触屏版</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css?v=20150129" rel="stylesheet" type="text/css" />
+	<link href="{G_TEMPLATES_CSS}/mobile/login.css" rel="stylesheet" type="text/css" />
+	<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+	<script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/area.js"></script>
+	<link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile/top.css">
+	<link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile/aui.css">
+</head>
+<body>
+<!-- 内页顶部 -->
+<header class="header">
+<div class="n-header-wrap">
+<div class="backbtn">
+<a href="javascript:;" onclick="history.go(-1)" class="h-count white">
+</a>
+</div>
+<div class="h-top-right ">
+<a href="{WEB_PATH}/mobile/home" class="h-search white"></a>
+</div>
+<div class="n-h-tit"><h1 class="header-logo">添加收货地址</h1></div>
+</div>
+</header>
+
+<style>
+.registerCon select{
+background: #FFF none repeat scroll 0% 0%;
+border: 5px solid #DDD;
+color: #CCC;
+border-radius: 5px;
+padding: 0px 5px;
+display: inline-block;
+position: relative;
+font-size: 16px;
+height: 50px;
+width: 101%;
+}
+.registerCon .loading{
+	padding-top: 20px;
+	color: #999;
+}
+.registerCon .form{
+	display:none;
+}
+</style>
+
+ <section>
+     
+	   <form class="registerform" method="post" action="{WEB_PATH}/mobile/home/useraddress">
+
+	<!--
+		<div class="registerCon">
+			
+    	        <ul style="display: block;" class="form">
+			
+					<li>
+					<p>省</p>
+						<input name="sheng" placeholder="" value="" type="text">
+                    </li>
+					<li>
+					 <p>市</p>
+						<input name="shi" placeholder="" value="" type="text">
+                    </li>
+					 <li>
+					<p>县</p>
+						<input name="xian" placeholder="" value="" type="text">
+                    </li>
+                    </li>
+        	        <li>
+						<select style="display: none;" name="shi"></select>
+                    </li>
+        	        <li>
+						<select style="display: none;" name="qu"></select>
+                    </li>
+        	        <li>
+						<select style="display: none;" name="jie"></select>
+                    </li>
+        	        <li>
+					<p>详细地址</p>
+						<input name="jiedao" placeholder="" value="" type="text">
+                    </li>
+					<li>
+					<p>邮政编码</p>
+						<input name="youbian" placeholder="" value="" type="text">
+                    </li>
+        	        <li>
+					<p>收货人</p>
+						<input name="shouhuoren" placeholder="" value="" type="text">
+                    </li>
+        	        <li>
+					<p>手机号</p>
+						<input name="mobile" placeholder="" value="" type="text">
+                    </li>
+					
+                    <li>
+					<input name="default" placeholder="" value="Y" type="hidden">
+						<input style="margin-right:20px;" name="submit" class="orangebut" id="btn_consignee_save" value="保存" title="保存提交" type="submit"> 
+						
+					</li>
+                </ul>
+				</div>
+-->
+
+				
+	<br/>	<br/>	
+		<div class="aui-content aui-card">       
+        <div class="aui-form">
+            <div class="aui-input-row">
+                <span class="aui-input-addon">省</span>
+                <input name="sheng" type="text" class="aui-input" placeholder=""/>
+            </div>
+
+            <div class="aui-input-row">
+                <span class="aui-input-addon">市</span>
+                <input name="shi" type="text" class="aui-input" placeholder=""/>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">县</span>
+                <input name="xian" type="text" class="aui-input" placeholder=""/>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">详细地址</span>
+                <input name="jiedao" type="text" class="aui-input" placeholder=""/>
+            </div>
+            <div class="aui-input-row">
+                <span class="aui-input-addon">邮政编码</span>
+                <input name="youbian" type="text" class="aui-input" placeholder=""/>
+            </div>
+			<div class="aui-input-row">
+                <span class="aui-input-addon">收货人</span>
+                <input name="shouhuoren" type="text" class="aui-input" placeholder=""/>
+            </div>
+			<div class="aui-input-row">
+                <span class="aui-input-addon">手机号</span>
+                <input name="mobile" type="text" class="aui-input" placeholder=""/>
+            </div>
+            <div class="aui-btn-row">
+                
+				<input name="default" placeholder="" value="Y" type="hidden">
+				<input style="margin-right:20px;" name="submit" class="aui-btn aui-btn-block aui-btn-success" id="btn_consignee_save" value="保存" title="保存提交" type="submit"> 
+						
+            </div>
+
+        </div>
+    </div>
+	 	</form>
+		
+	
+
+		</section>
+
+
+
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";
+  Path.Webpath = "{WEB_PATH}";
+
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+
+    </div>
+</body>
+</html>

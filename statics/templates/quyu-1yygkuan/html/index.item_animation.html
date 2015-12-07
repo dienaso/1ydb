@@ -1,0 +1,189 @@
+<div class="time-model clearfix">
+                            <div class="time-view">
+                                <div class="full-tips">已满员，揭晓结果即将公布</div>
+                                <ul id="ul_lotterytime" class="for-begin clearfix">
+                                    <li class="cur">
+									<a id="liMinute1"></a>
+									<a id="liMinute2"></a>
+									</li>
+                                    <li>:</li>
+                                    <li class="cur">
+									<a id="liSecond1"></a>
+									<a id="liSecond2"></a>
+									</li>
+                                    <li>:</li>
+                                    <li class="cur">
+									<a id="liMilliSecond1"></a>
+									<a id="last"></a>
+									</li>
+                                </ul>
+                                <!--正在计算中-->
+                                <div id="divLotteryTiming" style="display: none;" class="jiexiao-end">
+                                    <div class="line-wrapper u-progress">
+                                        <span class="pgbar"><span class="pging"></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="message-view">
+                                <img id="imgFunny" src="http://skin.1yyg.com/images/lotteryFun/n8.gif" alt="" border="0">
+                            </div>
+                        </div>
+						<div class="method">
+                            <p>1、取该商品最后购买时间前网站所有商品的最后100条购买时间记录；</p>
+                            <p>2、按时、分、秒、毫秒排列取值之和，除以该商品总参与人次后取余数；</p>
+                            <p>3、余数加上10000001 即为“幸运云购码”；</p>
+                            <p>4、余数是指整数除法中被除数未被除尽部分， 如7÷3 = 2 ......1，1就是余数 。</p>
+                        </div>
+<div id="span_a"></div>
+<div id="span_b"></div>
+		
+		<style>
+		.time-model .for-begin li.cur .Code_0{
+height: 100%;
+width: 50%;
+float: left;
+background-image: url("../images/code.png");
+background-position: -11px 5px;
+}
+
+.time-model .for-begin li.cur .Code_1{
+height: 100%;
+width: 50%;
+float: left;
+background-image: url("../images/code.png");
+background-position: -55px 5px;
+}
+
+.time-model .for-begin li.cur .Code_2{
+height: 100%;
+width: 50%;
+float: left;
+background-image: url("../images/code.png");
+background-position: -95px 5px;
+}
+
+.time-model .for-begin li.cur .Code_3{
+height: 100%;
+width: 50%;
+float: left;
+background-image: url("../images/code.png");
+background-position: -140px 5px;
+}
+
+.time-model .for-begin li.cur .Code_4{
+height: 100%;
+width: 50%;
+float: left;
+background-image: url("../images/code.png");
+background-position: -180px 5px;
+}
+
+.time-model .for-begin li.cur .Code_5{
+height: 100%;
+width: 50%;
+float: left;
+background-image: url("../images/code.png");
+background-position: -225px 5px;
+}
+
+.time-model .for-begin li.cur .Code_6{
+height: 100%;
+width: 50%;
+float: left;
+background-image: url("../images/code.png");
+background-position: -266px 5px;
+}
+
+.time-model .for-begin li.cur .Code_7{
+height: 100%;
+width: 50%;
+float: left;
+background-image: url("../images/code.png");
+background-position: -310px 5px;
+}
+
+.time-model .for-begin li.cur .Code_8{
+height: 100%;
+width: 50%;
+float: left;
+background-image: url("../images/code.png");
+background-position: -353px 5px;
+}
+
+.time-model .for-begin li.cur .Code_9{
+height: 100%;
+width: 50%;
+float: left;
+background-image: url("../images/code.png");
+background-position: -395px 5px;
+}
+
+
+
+		</style>
+<script type="text/javascript">	 
+function show_date_time_location(){
+	window.setTimeout(function(){
+		$("#divLotteryTimer").hide();
+		$("#divLotteryTiming").show();	
+		$.post("{WEB_PATH}/api/getshop/lottery_shop_set/",{"lottery_sub":"true","gid":{wc:$item['id']}},null);
+		
+		window.setTimeout(function(){window.location.href="{WEB_PATH}/dataserver/{wc:$item['id']}";},5000);},1000);}
+function show_date_time(endTime,obj){	
+	if(!this.endTime){this.endTime=endTime;this.obj=obj;}	
+	rTimeout = window.setTimeout("show_date_time()",30);	
+	timeold = this.endTime-(new Date().getTime());
+	if(timeold <= 0){		
+		$("#ul_lotterytime").attr("style","display: none;");
+		$("#liMinute1").attr("class","Code_0");
+		$("#liMinute2").attr("class","Code_0");
+		$("#liSecond1").attr("class","Code_0");
+		$("#liSecond2").attr("class","Code_0");
+		$("#liMilliSecond1").attr("class","Code_0");
+		$("#last").attr("class","Code_0");	
+		rTimeout && clearTimeout(rTimeout);	
+		show_date_time_location();	
+		return;
+	}	
+	sectimeold=timeold/1000
+	secondsold=Math.floor(sectimeold); 
+	msPerDay=24*60*60*1000
+	e_daysold=timeold/msPerDay 	
+	daysold=Math.floor(e_daysold); 				//天	
+	e_hrsold=(e_daysold-daysold)*24; 
+	hrsold=Math.floor(e_hrsold); 				//时
+	e_minsold=(e_hrsold-hrsold)*60;	
+	//分
+	minsold=Math.floor((e_hrsold-hrsold)*60);
+	minsold = (minsold<10?'0'+minsold:minsold)
+	minsold = new String(minsold);
+	minsold_1 = minsold.substr(0,1);
+	minsold_2 = minsold.substr(1,1);	
+
+	//秒
+	e_seconds = (e_minsold-minsold)*60;	
+	seconds=Math.floor((e_minsold-minsold)*60);
+	seconds = (seconds<10?'0'+seconds:seconds)
+	seconds = new String(seconds);
+	seconds_1 = seconds.substr(0,1);
+	seconds_2 = seconds.substr(1,1);	
+	//毫秒	
+	ms = e_seconds-seconds;
+	ms = new String(ms)
+	ms_1 = ms.substr(2,1);
+	ms_2 = ms.substr(3,1);
+	
+	$("#liMinute1").attr("class","Code_"+minsold_1);
+	$("#liMinute2").attr("class","Code_"+minsold_2);
+	$("#liSecond1").attr("class","Code_"+seconds_1);
+	$("#liSecond2").attr("class","Code_"+seconds_2);
+	$("#liMilliSecond1").attr("class","Code_"+ms_1);
+	$("#last").attr("class","Code_"+ms_2);
+	//this.obj.innerHTML=daysold+"天"+(hrsold<10?'0'+hrsold:hrsold)+"小时"+(minsold<10?'0'+minsold:minsold)+"分"+(seconds<10?'0'+seconds:seconds)+"秒."+ms;
+}
+
+$(function(){
+	$.ajaxSetup({async:false});
+	$.post("{WEB_PATH}/api/getshop/lottery_shop_get",{"lottery_shop_get":true,"gid":{wc:$item['id']},"times":Math.random()},function(sdata){	
+	if(sdata!='no'){show_date_time((new Date().getTime())+(parseInt(sdata))*1000,null);}});});
+</script>

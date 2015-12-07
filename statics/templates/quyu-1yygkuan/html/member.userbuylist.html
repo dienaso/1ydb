@@ -1,0 +1,119 @@
+{wc:templates "index","header"}
+<div class="layout980 clearfix">
+
+{wc:templates "member","top"}	
+	
+
+	
+<div class="c_person_record">
+<ul class="c_person_list">
+	<li class=""><a href="{WEB_PATH}/member/home/userbuylist" hidefocus="">云购记录</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/singlelist" hidefocus="">我的晒单</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/orderlist" hidefocus="">中奖记录</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/userfufen" hidefocus="">我的夺宝币</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/userbalance" hidefocus="">账户管理</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/commissions" hidefocus="">奖励专区</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/invitefriends" hidefocus="">邀请好友</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/address" hidefocus="">收货地址</a></li>
+</ul>
+			<div class="c_reward_list">                          
+				<h3 class="c_reward_title">购买记录</h3>
+				<ul class="c_reward_classify">
+					
+					
+					
+				<li></li><ul>
+			</ul></ul></div>
+			<c id="more"></c>
+			<input value="3" id="status" type="hidden">
+
+			<div class="c_part_record">
+		
+
+				
+				<table id="listTable">
+				<tbody>
+				<tr class="c_part_title c_recharge_title">
+				<th class="c_prize_img">商品图片</th>
+				<th class="c_cloud_name">商品名称</th>
+				<th class="c_part_num">云购状态</th>
+				<th class="c_cloud_number">参与人次</th>
+				<th class="c_cloud_number">云购号码</th>
+				<th class="c_part_operate">获得者</th>
+				</tr>
+
+			
+
+		{wc:loop $record $rt}
+        {wc:php:start}
+        	$jiexiao = get_shop_if_jiexiao($rt['shopid']);
+        {wc:php:end}
+		{wc:if $jiexiao['q_uid']}
+				<tr>
+			
+			
+				<td><a title="" target="_blank" class="pic" href="{WEB_PATH}/dataserver/{wc:$rt['shopid']}_{wc:$rt['shopqishu']}"><img src="{G_UPLOAD_PATH}/{wc:$jiexiao['thumb']}"></a></td>
+				<td><a href="{WEB_PATH}/dataserver/{wc:$rt['shopid']}_{wc:$rt['shopqishu']}">第({wc:$rt['shopqishu']})期 {wc:$rt['shopname']}</a></td>
+			
+				<td>已揭晓</td>
+
+				
+				<td>{wc:$rt['gonumber']}</td>
+		
+				<td class="c_person_color"><a href="{WEB_PATH}/dataserver/{wc:$rt['shopid']}_{wc:$rt['shopqishu']}">全部号码</a></td>
+
+				
+				<td>{wc:fun:get_user_name($jiexiao['q_user'])}</td>
+			
+				</tr>
+		
+			{wc:else}
+	
+				<td><a title="" target="_blank" class="pic" href="{WEB_PATH}/goods/{wc:$rt['shopid']}"><img src="{G_UPLOAD_PATH}/{wc:fun:yunjl($rt['shopid'])}"></a></td>
+				<td><a href="{WEB_PATH}/goods/{wc:$rt['shopid']}">第({wc:$rt['shopqishu']})期 {wc:$rt['shopname']}</a></td>
+				
+				<td>进行中...</td>
+				
+
+				
+				<td>{wc:$rt['gonumber']}</td>
+				
+
+			
+				<td class="c_person_color"><a href="{WEB_PATH}/goods/{wc:$rt['shopid']}">全部号码</a></td>
+		
+
+		
+				<td>商品进行中...</td>
+	
+				
+				
+
+				</tr>
+			 
+		{wc:if:end}
+			
+				
+		{wc:loop:end}	
+
+
+
+				</tbody>
+				</table>
+		    	<!-- {wc:if $shop['q_uid'] != $member['uid']}
+		    					{wc:if $shop['q_uid'] != null}
+		    							<div id="kkpager" style="margin: 64px auto;" class=""><img src="../../../../../IMAGES/no_record.png" onclick="window.location.href='/goods/allCat.do'" onmouseover="this.style.cursor='pointer'">{wc:$member['uid']}</div>
+		    					{wc:if:end}
+		    					{wc:if:end} -->
+			</div>
+
+		
+		</div>
+	</div>
+<!--center_center_end-->
+<div class="right">				
+</div>
+<!--center_rjght_end-->
+
+</div>
+{wc:templates "index","footer"}

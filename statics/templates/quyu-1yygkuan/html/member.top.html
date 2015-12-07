@@ -1,0 +1,92 @@
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/layout-home.css"/>
+<br/>
+<div class="c_person_center">
+		
+<style>
+	#memberSign{cursor:pointer;}
+	.c_error{border: none;position: absolute;top: 2px;left: 10px;height: 36px;background-color: #fff;
+		min-width: 124px;font-size: 12px;color: #ff4c4c;line-height: 38px;display: none;padding-left: 20px;
+		background: #fff url(/static/img/front/cloud_global/error_icon.png) no-repeat 0 center;
+	}
+	.c_valid_error{ min-width:100px;}
+</style>
+			<div style="background: transparent url(../../../../../images/morning.jpg) no-repeat scroll 0% 0%;" class="c_person_info">
+			<div class="c_info_left">
+				<div class="c_person_img">
+					<a href="{WEB_PATH}/member/home/userphoto"><img id="alterFace" src="{G_UPLOAD_PATH}/{wc:fun:get_user_img('160160')}" alt=""></a>
+				</div>
+				<div class="c_person_greet">
+					<p class="c_greet"><span class="c_time_period">Hi！</span>，<b style="color:#06F;">{wc:$member['username']}</b>一元云购有梦想就要惊喜！</p>
+					<ul class="c_detail_info">
+					{wc:if $member['username']==null}
+					<li>昵称：<div class="c_already_user">
+									<span id="nicknamemsg" title="未设置">未设置</span>&nbsp;
+									<a href="{WEB_PATH}/member/home/modify" class="c_user_update">[马上设置]</a>
+								</div>
+						</li>
+						{wc:else}
+						<li>昵称：<div class="c_already_user">
+									<span id="nicknamemsg" title="{wc:$member['username']}">{wc:$member['username']}</span>&nbsp;
+									<a href="{WEB_PATH}/member/home/modify" class="c_user_update">[修改]</a>
+								</div>
+						</li>
+						{wc:if:end}
+
+						<!--手机绑定-->
+						{wc:if $member['mobile']!=null}
+						<li>手机：<span>{wc:$member['mobile']}</span>&nbsp;
+								<a href="{WEB_PATH}/member/home/modify" class="c_tel_update">[修改]</a>
+						</li>		
+						{wc:else}
+						<li>手机：<span>未绑定</span>&nbsp;
+								<a href="{WEB_PATH}/member/home/modify" class="c_tel_update">[马上绑定]</a>
+						</li>	
+						{wc:if:end}
+
+						<!-- 绑定邮箱 -->
+						{wc:if $member['email']!=null}
+						<li>邮箱：<span>{wc:$member['email']}</span>&nbsp;<a href="{WEB_PATH}/member/home/modify" class="c_mail_update">[修改]</a></li>
+						{wc:else}
+						<li>邮箱：<span>未绑定</span>&nbsp;<a href="{WEB_PATH}/member/home/modify" class="c_mail_update">[马上绑定]</a></li>
+						{wc:if:end}
+
+						<!-- 绑定微信 -->
+						{wc:if $member['wxband']!=null}
+						<li>微信：<span>已绑定</span>&nbsp;<a href="{WEB_PATH}/member/home/modify" class="c_mail_update">[修改]</a></li>
+						{wc:else}
+						<li>微信：<span>未绑定</span>&nbsp;<a href="{WEB_PATH}/member/user/wxband" class="c_mail_update">[马上绑定]</a></li>
+						{wc:if:end}
+						
+						
+						<li>
+							<form class="registerform" method="post" action="{WEB_PATH}/member/home/qiandao">
+
+							<a class="c_quick_recharge c_quick_sign" id="memberSign" style="position:relative;top:6px;width: auto;"><input name="submit" type="submit" class="c_quick_recharge c_quick_sign" style="position: relative; top: -4px; width: auto; height: 26px; font-family: 微软雅黑;" value="立即签到"></a>
+							
+							</form>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="c_info_right"><a href="{WEB_PATH}/member/home/userrecharge" class="c_quick_recharge">立即充值</a></div>
+		</div>
+		<div class="c_person_detail">
+			<ul class="c_account_left">
+				<li>账户余额<span class="c_account_icon"></span></li>
+				<li id="rechargeMoney">{wc:fun:uidcookie('money')}&nbsp元</li>
+				
+			</ul>
+			<div class="c_account_center">
+				<ul>
+					<li>可用余额：<span id="jsd_shop_card">{wc:fun:uidcookie('money')}</span>&nbsp元</li>
+					<li>可用夺宝币：<span id="redCount">{wc:$member['score']}</span>&nbsp个</li>
+				</ul>
+				<ul>
+					<li>账号经验：<span id="use_score">{wc:$member['jingyan']}</span></li>
+					<li>佣金：<a href="{WEB_PATH}/member/home/commissions">佣金明细</a></li>
+				</ul>
+			</div>
+			<div class="c_account_right">
+				<div class="c_info_right"><a href="{WEB_PATH}/member/home/userrecharge" target="_blank" class="c_quick_recharge">立即充值</a></div>
+			</div>
+		</div>

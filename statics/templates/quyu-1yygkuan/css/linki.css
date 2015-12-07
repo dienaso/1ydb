@@ -1,0 +1,11 @@
+#Scroll { 
+CLEAR: both; BORDER-TOP: #c5c5c5 1px dashed;  FONT-SIZE: 12px;  MARGIN: 14px auto;  WIDTH: 1200px; COLOR: #c2130e; LINE-HEIGHT: 27px; BORDER-BOTTOM: #c5c5c5 1px dashed; HEIGHT: 27px; TEXT-ALIGN: left 
+} 
+#scroll ul{margin-top:0px;}
+#Scroll li { float:left;list-style-type:none;
+PADDING-RIGHT: 10px;width:85px; PADDING-LEFT: 10px; COLOR: #000; 
+} 
+a{TEXT-DECORATION: none }
+#Scroll A.s_end { 
+PADDING-RIGHT: 0px; MARGIN-LEFT: 8px 
+} 

@@ -1,0 +1,194 @@
+div, ul, li, p, form {
+    padding: 0px;
+    list-style-type: none;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+
+
+.content {
+    width: 1200px;
+    margin: 10px auto 0px;
+	font: 12px/20px Î¢ÈíÑÅºÚ,ËÎÌå;
+}
+.self_help {
+    background: none repeat scroll 0% 0% #F0FBFF;
+    border: 1px solid #BFE3FF;
+    padding: 20px 15px 15px;
+    position: relative;
+}
+
+.self_help .ico_csc {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: block;
+    width: 58px;
+    height: 58px;
+    background: url(images/csc_r.png) no-repeat scroll 0% 0% transparent;
+}
+
+.self_help .tit_csc {
+    padding: 52px 2px 0px;
+    background: url(images/csc.png) no-repeat scroll 0% 0% transparent;
+    margin-left: 4px;
+    margin-bottom: 10px;
+}
+
+.orange, .orange a, .chengse {
+    color: #F50;
+}
+
+.self_box {
+    border: 1px solid #BFE3FF;
+    background: none repeat scroll 0% 0% #FFF;
+    padding: 10px 0px;
+}
+
+.self_box dl {
+    float: left;
+    border-right: 1px dotted #E0E0E0;
+    width: 164px;
+    padding: 4px 11px;
+    text-align: center;
+}
+
+.self_box dl h4 {
+    font-size: 14px;
+}
+
+.self_box dl h4 span {
+    display: inline-block;
+    width: 32px;
+    height: 31px;
+    background: url(images/csc_ico.gif) no-repeat scroll 0% 0% transparent;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.self_box dl p {
+    text-align: left;
+    margin-top: 10px;
+    height: 64px;
+}
+
+.at_but {
+    width: 122px;
+    height: 34px;
+    line-height: 34px;
+    background: url(images/service_button.gif) no-repeat scroll 0% 0% transparent;
+    display: inline-block;
+    overflow: hidden;
+    border: 0px none;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.self_box .renz {
+    border: medium none;
+    padding-right: 0px;
+}
+
+.clear {
+    clear: both;
+    height: 0px;
+    display: block;
+}
+
+.tl_b {
+    top: -1px;
+    left: -1px;
+    background-position: 0px -8px;
+}
+
+.bl_b {
+    bottom: -1px;
+    left: -1px;
+    background-position: 0px -12px;
+}
+
+.clearfix:after {
+    content: " ";
+    display: block;
+    height: 0px;
+    clear: both;
+}
+
+.h_box {
+    margin-top: 10px;
+    border: 1px solid #BFE3FF;
+    position: relative;
+}
+
+.h_tit {
+    height: 29px;
+    line-height: 29px;
+    padding: 0px 10px;
+    background: url(images/index_l_t.gif) repeat-x scroll 0% 0% transparent;
+    border-bottom: 1px solid #BFE3FF;
+}
+.h_tit h3 {
+    font-size: 14px;
+}
+
+.h_con {
+    padding: 10px;
+    background: none repeat scroll 0% 0% #FFF;
+}
+
+.more_help dd {
+    line-height:3.3;
+}
+
+.more_help dd strong {
+    margin-right: 15px;
+    color: #333;
+}
+
+.tr_b {
+    top: -1px;
+    right: -1px;
+    background-position: -4px -8px;
+}
+
+.br_b {
+    bottom: -1px;
+    right: -1px;
+    background-position: -4px -12px;
+}
+
+.tl, .tr, .bl, .br, .tl_b, .tr_b, .bl_b, .br_b {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    overflow: hidden;
+    background-image: url(images/j_6.gif);
+    background-repeat: no-repeat;
+}
+.gray3{width:1200px; float:left;}
+
+.self_box .tixian h4 span {
+    background-position: 0px -37px;
+}
+
+.self_box .tixian1 h4 span {
+    background-position: 0px -37px;
+}
+
+.self_box .count h4 span {
+    background-position: 0px -128px;
+    margin-right: 8px;
+}
+
+.self_box .renz h4 span {
+    background-position: 0px -86px;
+}
+
+.wx{ background:url(images/wx.jpg) no-repeat center 10px; width:204px; height:204px; float:right; text-align:center}
+.tx iframe{float:left; padding-top:60px; padding-right:20px;}

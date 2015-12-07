@@ -1,0 +1,158 @@
+{wc:templates "index","header"}
+<style type="text/css">
+.m-hdframe{height:650px;}
+.demo{width:417px; height:717px; position:relative; float:left;margin-left:100px;margin-top:50px;} 
+#disk{width:417px; height:717px; background:url(http://img.yyjg.com/images/disk.png) no-repeat} 
+#start{width:163px; height:320px; position:absolute; top:46px; left:130px;} 
+#start img{cursor:pointer} 
+.g-body{background-image:url(http://img.yyjg.com/images/bg.jpg); background-repeat:repeat-x;}
+.userinfo{float:left;margin-left:100px;background-image:url(http://img.yyjg.com/images/1_03.gif); height:480px;width:500px;background-repeat:repeat-x;}
+.g-mod-cnt{top:800px;float:left;position:absolute;left:850px;}
+.main-btn{background: url('http://img.yyjg.com/images/huodong/mix-icon.png') no-repeat;display: block; margin: 0px auto 0; width: 250px; height: 65px; text-indent: -999em;}
+.chargeBtn{background-position: 0 -250px;}
+.g_rope{width:1200px;position:relative;}
+.g-mod{margin:0px 88px;padding: 20px 30px 40px; border-bottom: 1px solid #cccccc;}
+.m-shuang11 .g-mod-hd{background: url('http://img.yyjg.com/images/huodong/mix-icon.png') no-repeat;}
+.m-shuang11 .g-mod-hd{background-position: 0 -155px;}
+.m-shuang11 .g-mod-hd{margin-left: -72px; width: 320px; height: 95px; text-indent: -999em;}
+</style>
+<script type="text/javascript" src="{G_TEMPLATES_JS}/jQueryRotate.2.2.js"></script>
+<script type="text/javascript" src="{G_TEMPLATES_JS}/jquery.easing.min.js"></script>
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_CSS}/kk.css"/>
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_CSS}/kefu.css"/>
+<script type="text/javascript">
+$(function(){      
+     $("#startbtn").click(function(){
+        lottery();
+    });
+});
+function lottery(){
+    $.ajax({
+        type: 'POST',
+        url: '{WEB_PATH}/zhuanpan/zhuanpan/get_award',
+        dataType: 'json',
+        cache: false,
+        error: function(){
+            alert('error');
+            return false;
+        },
+        success:function(json){
+            $("#startbtn").unbind('click').css("cursor","default");
+            if (json.code == 200){
+                var a = json.angle;
+                $("#startbtn").rotate({
+                    duration:3000,
+                    angle: 0,
+                    animateTo:1800+a,
+                    easing: $.easing.easeOutSine,
+                    callback: function(){
+                        alert(json.msg); 
+                        $("#startbtn").click(function(){ lottery(); }).css("cursor","pointer");
+                        /*var con = confirm('恭喜您，中得'+p+'\n还要再来一次吗？');
+                        if(con){
+                            lottery();
+                        }else{
+                            return false;
+                        }*/
+                    }
+                });
+            } else {
+                alert(json.msg); 
+            }
+        }
+    });
+}
+</script>
+<div class="g-body">
+    <div class="m-hdframe">
+        <div class="userinfo">
+<script>
+	function scroll_news(){
+		$('#dvmq li').eq(0).fadeOut('slow',function(){
+			$(this).clone().appendTo($(this).parent()).fadeIn('slow');
+			$(this).remove();
+		});
+	}
+	
+	function distanceOfTimeInWords(timestampInPage){
+	   var timestampNow = Math.round(new Date().getTime()/1000);
+	   var dif = timestampNow-timestampInPage;
+	   var outPut ="";
+
+	   if (dif<=15) outPut ="刚才";
+	   else if(dif<60) outPut=dif+"秒前";
+	   else if(dif<3600) outPut=Math.round(dif/60)+"分钟前";
+	   else if(dif<86400) outPut=Math.round(dif/3600)+"小时前";
+	   else {
+		   var date = new Date(timestampInPage*1000);
+		   var hours = date.getHours();
+		   var minutes =date.getMinutes();
+		   if(hours<10) hours = "0"+hours;
+		   if(minutes<10) minutes="0"+minutes;
+
+		   outPut = date.getMonth()+1+"-"+(date.getDate())+" "+hours+":"+minutes;
+	   }
+	   return outPut;
+	}
+
+	$(function(){
+		$.ajax({
+			type: 'GET',
+			url: '{WEB_PATH}/zhuanpan/zhuanpan/',
+			dataType: 'json',
+			cache: false,
+			error: function(){
+				return false;
+			},
+			success:function(json){
+				$.each(json, function (key, value){
+					//var tmpHtml = '<li>' + distanceOfTimeInWords(value.addtime) + ' ';
+					var tmpHtml = '<li>' ;
+					if (value.username){
+						tmpHtml += value.username;
+					}
+					else if (value.mobile){
+						tmpHtml += value.mobile;
+					}
+					else if (value.email){
+						tmpHtml += value.email;
+					}
+					tmpHtml += ' 抽中了 ' + value.award_text + '【' + value.award_name + ':' + value.award_count + '】</li>';
+					$('#dvmq ul').append(tmpHtml);
+				})
+				setInterval('scroll_news()',2000);
+			}
+		});
+	});
+	
+</script>
+<style type="text/css">
+	#dvmq {width:398px; height: 130px;margin-top: 344px;margin-left: 102px;color: #fff;overflow: hidden;}
+		#dvmq ul li { height: 28px; }
+</style>
+<div id="dvmq">
+	<ul>
+		
+	</ul>
+</div>
+        </div>
+        <div class="demo">     
+            <div id="disk"></div>     
+            <div id="start"><img src="http://img.yyjg.com/images/start.png" id="startbtn"></div> 
+        </div> 
+        <div class="g-mod-cnt">
+            <a class="main-btn chargeBtn" href="http://www.yyjg.com/member/home/userrecharge.html" target="_blank">马上充值</a>
+        </div>
+    </div>
+    <div class="g_rope">
+        <div class="g-mod m-shuang11" style="font-size:14px;">
+            <h3 class="g-mod-hd">支付送红包</h3>
+                <p><br />1、活动时间:2014年11月4日---2015年2月12日 。</p>
+				<p><br />2、在活动时间内，所有注册会员单次充值每满100元获得一次抽奖机会，例如：您单次充值了210元，您将获得2次抽奖机会。 </p>
+				<p><br />3、一等奖1111元聚购红包，二等奖150元聚购红包，三等奖100元聚购红包，四等奖50元聚购红包，五等奖20元聚购红包，六等奖10元聚购红包，七等奖5元聚购红包。 </p>
+				<p><br />4、一元聚购商应广大会员要求，活动时间再次延长，本次活动中奖率100%，获得对应红包后会即时到您的闪购帐户，红包金额不得提现。 </p>
+				<p><br />5、对于查实的作弊行为，扣除一切红包，取消抽奖资格。借助网站及其他平台，恶意获取红包，一经查实，扣除一切红包金额，清除云币账户且封号。  </p>
+        </div>
+    </div>
+</div>
+{wc:templates "index","footer"}

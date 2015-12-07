@@ -1,0 +1,68 @@
+{wc:templates "index","header"}
+{wc:templates "member","top"}	
+<div class="c_person_record">
+<ul class="c_person_list">
+	<li class=""><a href="{WEB_PATH}/member/home/userbuylist" hidefocus="">云购记录</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/singlelist" hidefocus="">我的晒单</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/orderlist" hidefocus="">中奖记录</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/userfufen" hidefocus="">我的夺宝币</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/userbalance" hidefocus="">账户管理</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/commissions" hidefocus="">奖励专区</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/invitefriends" hidefocus="">邀请好友</a></li>
+	<li class=""><a href="{WEB_PATH}/member/home/address" hidefocus="">收货地址</a></li>
+</ul>
+<div class="main-content clearfix">
+{wc:templates "member","left"}
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/layout-setUp.css"/>
+<link rel="stylesheet" type="text/css" href="{G_TEMPLATES_STYLE}/css/layout-invitation.css"/>
+
+<div class="R-content">
+	<div class="subMenu">
+		<a class="current2 current" href="{WEB_PATH}/member/home/qiandao">签到</a>
+	</div>
+
+	<div class="total">
+	<dt>
+		</dt><dd>您已连续签到：<b class="orange">{wc:$member['sign_in_time']}</b>天</dd>  <dd>总共签到：<b class="orange">{wc:$member['sign_in_time_all']}</b>天</dd>  <dd>最后签到日期：<b class="orange">{wc:$member['sign_in_date']}</b></dd>
+
+   </div>
+	<div class="info">
+		<form class="registerform" method="post" action="{WEB_PATH}/member/home/qiandao">
+			<table border="0" cellpadding="0" cellspacing="8">
+				<tr>
+					<td><em>&nbsp;</em></td>
+					<td><input name="submit" type="submit" class="bluebut" value="马上签到"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div class="divSQTX">
+	<font size="+1" color="#FF0000">
+		<span class = "gray02"><font size="+1" color="#FF0000"><b>签到说明</font></b></span>
+	</font><br>
+
+	1.每天签到时间为{wc:$time_start}到{wc:$time_stop}<br>
+	2.每次签到可获得{wc:$time_score}夺宝币（1000夺宝币=1元）<br>
+
+	<br><br>
+	<br>
+	<font size="+1" color="#FF0000">
+		<span class = "gray02"><font size="+1" color="#FF0000"><b>夺宝币使用说明</font></b></span>
+	</font><br>
+
+	<img src="{G_TEMPLATES_STYLE}/images/fufen.jpg" />
+	<br><br><br>
+
+	签到送夺宝币{wc:fun:_cfg('web_name_two')}将进行到底！！！
+	</div>
+</div>
+</div>
+		</div>
+	</div>
+<!--center_center_end-->
+<div class="right">				
+</div>
+<!--center_rjght_end-->
+
+</div>
+{wc:templates "index","footer"}

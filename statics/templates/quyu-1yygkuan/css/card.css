@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+.recharge-card ul{
+	padding:30px 0 0 40px;
+}
+
+.recharge-card li{
+	clear:both;
+	width:447px;
+	padding-left:82px;
+	font-size:16px;
+	position:relative;
+	color:#333;
+}
+
+.recharge-card li label{
+	display:block;
+	line-height:28px;
+	vertical-align:middle;
+	position:absolute;
+	left:0;
+}
+
+.recharge-card li input{
+	width:192px;
+	height:33px;
+	padding:4px 3px;
+	border-top:1px solid #bbb;
+	border-left:1px solid #bbb;
+	border-bottom:1px solid #ddd;
+	border-right:1px solid #ddd;
+	color:#FFF;
+	font:14px/1.5 "\5FAE\8F6F\96C5\9ED1",Arial;
+	vertical-align:middle;
+}
+
+.recharge-card li.z-error{
+	height:18px;
+	margin:3px 0 10px;
+}
+
+.recharge-card li.z-error span{
+	color:#dd0101;
+	font-size:12px;
+	background:url(/Images/arrow_button.png) no-repeat -170px -80px;
+	padding:0 0 0 18px;
+}
+
+.recharge-card li a{
+	display:block;
+	width:86px;
+	height:23px;
+	padding:0;
+	margin-top:15px;
+}
+
+.recharge-card li a.graybtn{
+	background:#bbb;
+	border:1px solid #bbb;
+	text-align:center;
+	color:#fff;
+	border-radius:2px;
+	cursor:default;
+}

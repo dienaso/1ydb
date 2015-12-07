@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>任务大厅-极光闪购</title>
+    <meta content="app-id=518966501" name="apple-itunes-app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0"/>
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="http://v4.yungoutest.com/statics/templates/quyu-1yygkuan/images/mobile/touch-icon.png" rel="apple-touch-icon-precomposed" />
+    <link href="favicon.ico" rel="shortcut icon" />
+    <link href="http://v4.yungoutest.com/statics/templates/quyu-1yygkuan/css/mobile/comm.css" rel="stylesheet" type="text/css" />
+	<link href="http://v4.yungoutest.com/statics/templates/quyu-1yygkuan/css/mobile/index.css" rel="stylesheet" type="text/css" />
+	<script src="http://v4.yungoutest.com/statics/templates/quyu-1yygkuan/js/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+	<script id="pageJS" data="http://v4.yungoutest.com/statics/templates/quyu-1yygkuan/js/mobile/Index.js" language="javascript" type="text/javascript"></script>
+	
+<link rel="stylesheet" href="http://v4.yungoutest.com/statics/templates/quyu-1yygkuan/css/mobile/top.css">
+</head>
+<body>
+<div class="h5-1yyg-v1" id="loadingPicBlock">    
+
+<!-- 栏目页面顶部 -->
+<header class="header">
+<div class="n-header-wrap">
+<div class="backbtn">
+<a href="javascript:;" onclick="history.go(-1)" class="h-count white">
+</a>
+</div>
+<div class="h-top-right ">
+<a href="http://v4.yungoutest.com/?/mobile/home" class="h-search white"></a>
+</div>
+<div class="n-h-tit"><h1 class="header-logo"></h1></div>
+</div>
+</header>
+    
+    					<script type="text/javascript">
+	$(document).ready(function (){
+		$.get('{WEB_PATH}/sign/sign/sign_init', function (result){
+			var data = eval('(' + result + ')');
+			$('#sign .sign p.people').html(data.people);
+			$('#sign .sign p.count').html(data.count);
+
+			var sign_html = '';
+			for (var i = 0; i < data.mycount; i++) {
+				sign_html += '<li>'
+				sign_html += '	<a class="yes" href="javascript:void(0)"></a>';
+				sign_html += '</li>';
+			};
+
+			for (var i = 0; i < 28 -  data.mycount; i++) {
+				sign_html += '<li>'
+				sign_html += '	<a href="javascript:void(0)"></a>';
+				sign_html += '</li>';
+			};
+
+			$('#sign .sign ul').append(sign_html);
+		})
+
+		var sign_show = false;
+		$('#sign .sign a.close').click(function (){
+			if (sign_show) {
+				$('#sign').hide();
+				sign_show = false;
+			} else {
+				var _top = $(window).scrollTop();
+				$('#sign').css('top', _top).show();
+				sign_show = true;
+			}
+		})
+
+		$('#sign .sign ul li a:not(.yes)').live({
+			click : function (){
+				$.get('{WEB_PATH}/sign/sign/sign_today', function (result){
+					var data = eval('(' + result + ')');
+					alert(data.msg);
+					if (data.code == 200) {
+						$('#sign .sign p.people').html(data.people);
+						$('#sign .sign p.count').html(data.count);
+						$('#sign .sign ul li a:not(.yes)').eq(0).addClass('yes').css('background', 'url({wc:php:start}echo G_GLOBAL_STYLE;{wc:php:end}/fee/sign/yes.png) no-repeat');
+					};
+				})
+			}
+		})
+	})
+</script>
+
+<!-- 内页顶部 -->
+
+
+    <!-- 任务开始 -->
+	<section class="g-main">
+	</br></br></br></br>
+		    <ul class="m-lott-lipro">
+			        <li>
+		                <a href="javascript:void(0)" class="u-lott-pic">
+		                    <img src="image/task1.png" alt="" border="0">
+		                </a>
+		                <span><a href="#">每日签到</a></span>
+			        </li>
+				<li>
+		                <a href="{WEB_PATH}/mobile/lottery" class="u-lott-pic">
+		                    <img src="image/task5.png" alt="" border="0">
+		                </a>
+		                <span><a href="#">充值抽奖</a></span>
+			        </li>
+					 <li>
+		                <a href="#" class="u-lott-pic">
+		                    <img src="image/task2.png" alt="" border="0">
+		                </a>
+		                <span><a href="#">完善资料</a></span>
+			        </li>
+					 <li>
+		                <a href="#" class="u-lott-pic">
+		                    <img src="image/task3.png" alt="" border="0">
+		                </a>
+		                <span><a href="#">关注微信</a></span>
+			        </li>
+					<li>
+		                <a href="#" class="u-lott-pic">
+		                    <img src="image/task4.png" alt="" border="0">
+		                </a>
+		                <span><a href="#">推广赚钱</a></span>
+			        </li>
+					<li>
+		                <a href="#" class="u-lott-pic">
+		                    <img src="image/task6.png" alt="" border="0">
+		                </a>
+		                <span><a href="#">转发微博</a></span>
+			        </li>
+					<li>
+		                <a href="#" class="u-lott-pic">
+		                    <img src="image/task7.png" alt="" border="0">
+		                </a>
+		                <span><a href="#">关注空间</a></span>
+			        </li>
+					<li>
+		                <a href="#" class="u-lott-pic">
+		                    <img src="image/task8.png" alt="" border="0">
+		                </a>
+		                <span><a href="#">下载APP</a></span>
+			        </li>
+		    </ul>
+
+    </section>
+
+
+    
+
+﻿<footer class="footer">
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<p>
+	<br />
+</p>
+<style>
+.footerdi .f_home i.cur{
+	background-position: 0 0 !important;
+}
+.footerdi .f_whole i.cur{
+	background-position: 0 -52px !important;
+}
+.footerdi .f_jiexiao i.cur{
+	background-position: 0 -222px !important;
+}
+.footerdi .f_car i.cur{
+	background-position: 0 -105px !important;
+}
+.footerdi .f_personal i.cur{
+	background-position: 0 -152px !important;
+}
+</style>
+<div class="footerdi" style="bottom: 0px;">
+	<ul>
+		<li class="f_home">
+			<a title="首页" href="http://v4.yungoutest.com/?/mobile/mobile/"><i class="cur">&nbsp;</i>首页</a>
+		</li>
+		<li class="f_whole">
+			<a title="所有商品" href="http://v4.yungoutest.com/?/mobile/mobile/glist"><i class="">&nbsp;</i>所有商品</a>
+		</li>
+		<li class="f_jiexiao">
+			<a title="最新揭晓" href="http://v4.yungoutest.com/?/mobile/mobile/lottery"><i class="">&nbsp;</i>最新揭晓</a>
+		</li>
+		<li class="f_car">
+			<a title="首页" href="http://v4.yungoutest.com/?/mobile/cart/cartlist"><i class="">&nbsp;</i>购物车</a>
+		</li>
+		<li class="f_personal">
+			<a title="首页" href="http://v4.yungoutest.com/?/mobile/home"><i class="">&nbsp;</i>我的闪购</a>
+		<li>
+	</ul>
+</div>
+</footer><script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="http://v4.yungoutest.com/statics/templates/quyu-1yygkuan";  
+  Path.Webpath = "http://v4.yungoutest.com/?";
+  
+    var Base = {
+        head: document.getElementsByTagName("head")[0] || document.documentElement,
+        Myload: function(B, A) {
+            this.done = false;
+            B.onload = B.onreadystatechange = function() {
+                if (!this.done && (!this.readyState || this.readyState === "loaded" || this.readyState === "complete")) {
+                    this.done = true;
+                    A();
+                    B.onload = B.onreadystatechange = null;
+                    if (this.head && B.parentNode) {
+                        this.head.removeChild(B)
+                    }
+                }
+            }
+        },
+        getScript: function(A, C) {
+            var B = function() {};
+            if (C != undefined) {
+                B = C
+            }
+            var D = document.createElement("script");
+            D.setAttribute("language", "javascript");
+            D.setAttribute("type", "text/javascript");
+            D.setAttribute("src", A);
+            this.head.appendChild(D);
+            this.Myload(D, B)
+        },
+        getStyle: function(A, B) {
+            var B = function() {};
+            if (callBack != undefined) {
+                B = callBack
+            }
+            var C = document.createElement("link");
+            C.setAttribute("type", "text/css");
+            C.setAttribute("rel", "stylesheet");
+            C.setAttribute("href", A);
+            this.head.appendChild(C);
+            this.Myload(C, B)
+        }
+    }
+    function GetVerNum() {
+        var D = new Date();
+        return D.getFullYear().toString().substring(2, 4) + '.' + (D.getMonth() + 1) + '.' + D.getDate() + '.' + D.getHours() + '.' + (D.getMinutes() < 10 ? '0': D.getMinutes().toString().substring(0, 1))
+    }
+    Base.getScript('http://v4.yungoutest.com/statics/templates/quyu-1yygkuan/js/mobile/Bottom.js?v=' + GetVerNum());
+</script>
+
+</div>
+</body>
+</html>

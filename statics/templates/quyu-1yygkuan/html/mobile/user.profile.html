@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>编辑资料 - {wc:$webname}触屏版</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css?v=20150129" rel="stylesheet" type="text/css" />
+	<link href="{G_TEMPLATES_CSS}/mobile/login.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile/top.css">
+	<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+	<script type="text/javascript" src="{G_TEMPLATES_STYLE}/js/area.js"></script>
+</head>
+<body>
+    <div class="h5-1yyg-v1" id="content">
+
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+<header class="header">
+<div class="n-header-wrap">
+<div class="backbtn">
+<a href="javascript:;" onclick="history.go(-1)" class="h-count white">
+</a>
+</div>
+<div class="h-top-right ">
+<a href="{WEB_PATH}/mobile/home" class="h-search white"></a>
+</div>
+<div class="n-h-tit"><h1 class="header-logo">编辑资料</h1></div>
+</div>
+</header>
+
+        <section>
+	        <div class="registerCon">
+    	        <ul class="form">
+        	        <li>
+						手机号：
+						{wc:if $this->userinfo['mobile']!=null && $this->userinfo['mobilecode']=='1'}
+							<b>{wc:fun:trim($this->userinfo['mobile'])}</b>
+						{wc:else}
+							未绑定
+						{wc:if:end}
+                    </li>
+        	        <li>
+						<input name="username" type="text" placeholder="请输入昵称" value="{wc:fun:trim($this->userinfo['username'])}">
+                    </li>
+        	        <li>
+						<input name="qianming" type="text" placeholder="请输入签名" value="{wc:fun:trim($this->userinfo['qianming'])}">
+                    </li>
+                    <li>
+						<a href="javascript:;" id="btnSave" class="nextBtn  orgBtn">保存</a>
+					</li>
+                </ul>
+	        </div>
+        </section>
+
+<script>
+$(function(){
+
+    var b = function() {
+		var submiting = false;
+		var $username = $('input[name=username]');
+		var $qianming = $('input[name=qianming]');
+		$('#btnSave').click(function(){
+			if (submiting) {
+				return false;
+			}
+			var post = {
+				username : $username.val(),
+				qianming : $qianming.val()
+			};
+			if ( post.username == '' ) {
+				$.PageDialog.fail("昵称不能为空哦");
+				return false;
+			}
+
+			var the = $(this).text('正在提交');
+			submiting = true;
+			$.post("{WEB_PATH}/mobile/user/profile",post,function(s){
+				if (s=='1') {
+					$.PageDialog.ok('保存成功！', function(){
+						window.location.href="{WEB_PATH}/mobile/home";
+					});
+
+				} else {
+					submiting = false;
+					the.text('保存');
+					$.PageDialog.fail(s);
+				}
+			},'text');
+
+
+		});
+	};
+
+    var a = function() {
+        Base.getScript(Path.Skin + "/js/mobile/pageDialog.js", b);
+    };
+    Base.getScript(Path.Skin + "/js/mobile/Comm.js", a);
+});
+
+</script>
+
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";
+  Path.Webpath = "{WEB_PATH}";
+
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+
+    </div>
+</body>
+</html>

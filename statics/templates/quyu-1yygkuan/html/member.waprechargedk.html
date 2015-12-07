@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head><title>
+	帐户充值 - {wc:$webname}触屏版
+</title><meta content="app-id=518966501" name="apple-itunes-app" /><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" /><meta content="yes" name="apple-mobile-web-app-capable" /><meta content="black" name="apple-mobile-web-app-status-bar-style" /><meta content="telephone=no" name="format-detection" /><link href="{G_TEMPLATES_CSS}/mobile/comm.css?v=130715" rel="stylesheet" type="text/css" /><link href="{G_TEMPLATES_CSS}/mobile/member.css?v=130726" rel="stylesheet" type="text/css" /><script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script><script id="pageJS" data="{G_TEMPLATES_JS}/mobile/recharge.js" language="javascript" type="text/javascript"></script><link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile/top.css">
+<link href="{G_TEMPLATES_CSS}/mobile/edk.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div class="h5-1yyg-v1" id="loadingPicBlock">
+    <style>
+.registerCon select{
+background: #FFF none repeat scroll 0% 0%;
+border: 5px solid #DDD;
+color: #CCC;
+border-radius: 5px;
+padding: 0px 5px;
+display: inline-block;
+position: relative;
+font-size: 16px;
+height: 50px;
+width: 101%;
+}
+.registerCon .loading{
+	padding-top: 20px;
+	color: #999;
+}
+.registerCon .form{
+	display:none;
+}
+
+
+.regular-radio {
+	display: none;
+}
+
+.regular-radio + label {
+	-webkit-appearance: none;
+	background-color: #fafafa;
+	border: 1px solid #cacece;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05);
+	padding: 5px;
+	border-radius: 50px;
+	display: inline-block;
+	position: relative;
+}
+
+.regular-radio:checked + label:after {
+	content: ' ';
+	width: 12px;
+	height: 12px;
+	border-radius: 50px;
+	position: absolute;
+	top: 0px;
+	background: #99a1a7;
+	box-shadow: inset 0px 0px 10px rgba(0,0,0,0.3);
+	text-shadow: 0px;
+	left: 0px;
+	font-size: 32px;
+}
+
+.regular-radio:checked + label {
+	background-color: #e9ecee;
+	color: #99a1a7;
+	border: 0px solid #ADB8C0;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px -15px 10px -12px rgba(0,0,0,0.05), inset 15px 10px -12px rgba(255,255,255,0.1), inset 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.regular-radio + label:active, .regular-radio:checked + label:active {
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05), inset 0px 1px 3px rgba(0,0,0,0.1);
+}
+</style>
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+<header class="header">
+<div class="n-header-wrap">
+<div class="backbtn">
+<a href="javascript:;" onclick="history.go(-1)" class="h-count white">
+</a>
+</div>
+<div class="h-top-right ">
+<a href="{WEB_PATH}/mobile/home" class="h-search white"></a>
+</div>
+<div class="n-h-tit"><h1 class="header-logo">点卡充值</h1></div>
+</div>
+</header>
+
+	<form id="toPayForm" name="toPayForm" action="{WEB_PATH}/member/cart/addmoneydk" method="post">
+    <div class="g-Total gray9">您的当前余额：<span class="orange arial">{wc:$member['money']}</span>元</div>
+    <section class="clearfix g-member">
+        <div class="g-Recharge">
+	        <ul id="ulOption">
+			<div class="button-holder">
+		        <li money="10">
+				<a><input id="radio-1-10" class="regular-radio" href="javascript:;" type="radio" id="rd10" name="money" value="10" checked="checked">
+				<label for="radio-1-10"></label>
+				10元<s></s></a>
+				</li>
+				<li money="20">
+				<a><input id="radio-1-20" class="regular-radio" href="javascript:;" type="radio" name="money" value="20" id="rd20">
+				<label for="radio-1-20"></label>
+				20元<s></s></a>
+				</li>
+		        <li money="30">
+				<a>
+				<input href="javascript:;" type="radio" id="radio-1-30" class="regular-radio" name="money" value="30" checked="checked">
+				<label for="radio-1-30"></label>
+				30元<s></s></a>
+				</li>
+		        <li money="50">
+				<a><input id="radio-1-50" class="regular-radio" href="javascript:;" type="radio" name="money" value="50" id="rd50">
+				<label for="radio-1-50"></label>
+				50元<s></s></a>
+				</li>
+		        <li money="100">
+				<a><input id="radio-1-100" class="regular-radio" href="javascript:;" type="radio" name="money" value="100" id="rd100">
+				<label for="radio-1-100"></label>
+				100元<s></s></a>
+				</li>
+		       
+				</div>
+	        </ul>
+	    </div>
+	    <article class="clearfix mt10 m-round g-pay-ment g-bank-ct">
+
+	        <ul id="ulBankList">
+			     <li class="gray6">请选择卡类型和地区(神州行充值卡请选择地区)</li>
+	        <ul style="display:none">
+			<li>
+				<input checked="checked" type="hidden" value="10" name="account">               
+                <img style="border:1px solid #eee; padding:1px; margin-right:20px;" height="35px" width="100px" src="{G_UPLOAD_PATH}/{wc:$pay['pay_thumb']}">
+                
+            </li>
+            
+		</ul>
+			<li class="gray9">
+
+			     </li>
+			<!--点卡支付开始-->
+<div class="charge_money_list">
+	
+	
+           <style>
+				.yeepay_bank img{ border:1px solid #eee; padding:2px; width:130px; height:35px; float:left; margin-right:20px;}
+				.yeepay_bank input{ float:left;}
+			</style>
+
+
+		
+		<h6>			
+				<input type="hidden" id="hidPayName" name="payName" value="">
+				<input type="hidden" id="hidPayBank" name="payBank" value="0">
+				
+
+		
+		</h6>
+
+		<ul>		
+          {wc:loop $paylist  $pay}
+		{wc:if $pay['pay_id'] == 10}			
+			<li>
+				<input checked="checked" type="radio" value="10" name="account">               
+                <img style="border:1px solid #eee; padding:1px; margin-right:20px;" height="35px" width="100px" src="{G_UPLOAD_PATH}/{wc:$pay['pay_thumb']}">
+                
+            </li>
+           {wc:if:end}
+{wc:loop:end}             
+		</ul>
+		<div>
+			
+            	<ul>
+					<li><label>卡类型：</label>
+					<select name="cardType" style="color: #000; width:200px;height:40px"    >
+						<option value="1">1 – QQ卡</option>
+						<option value="2">2 – 盛大卡</option>
+						<option value="3">3 – 骏网卡</option>
+						<option value="4">4 – 亿卡</option>
+						<option value="5">5 - 完美一卡通</option>
+						<option value="6">6 - 搜狐一卡通</option>
+						<option value="7">7 - 征途游戏卡</option>
+						<option value="8">8 - 久游一卡通</option>
+						<option value="9">9 - 网易一卡通</option>
+						<option value="10">10– 魔兽卡</option>
+						<option value="11">11- 联华卡</option>
+						<option value="12">12- 电信充值卡</option>
+						<option value="13">13- 神州行充值卡</option>
+						<option value="14">14- 联通充值卡</option>
+						<option value="15">15- 金山一卡通</option>
+						<option value="16">16- 光宇一卡通</option>
+						 </select>
+					</li>
+					<li class="z-error"></li>
+					<li><label>省份：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label><select name="restrict" style="color: #000
+					;width:200px;height:40px">
+						<option value="0" selected>全国通用</option>
+						<option value="9">四川省</option>
+						<option value="10">重庆市</option>
+						<option value="11">贵州省</option>
+						<option value="12">云南省</option>
+						<option value="13">西藏自治区</option>
+						<option value="14">北京市</option>
+						<option value="15">天津市</option>
+						<option value="16">河北省</option>
+						<option value="17">山西省</option>
+						<option value="18">内蒙古自治区</option>
+						<option value="19">辽宁省</option>
+						<option value="20">吉林省</option>
+						<option value="21">黑龙江省</option>
+						<option value="22">上海市</option>
+						<option value="23">江苏省</option>
+						<option value="24">浙江省</option>
+						<option value="25">安徽省</option>
+						<option value="26">福建省</option>
+						<option value="27">江西省</option>
+						<option value="28">河南省</option>
+						<option value="29">广东省</option>
+						<option value="30">湖北省</option>
+						<option value="31">湖南省</option>
+						<option value="32">广西壮族自治区</option>
+						<option value="33">海南省</option>
+						<option value="34">陕西省</option>
+						<option value="35">甘肃省</option>
+						<option value="36">山东省</option>
+						<option value="37">青海省</option>
+						<option value="38">宁夏回族自治区</option>
+						<option value="39">维吾自治区</option>
+						<option value="40">香港特别行政区</option>
+					  </select> 
+	    </article>
+		<!--点卡卡号卡密-->
+		<section>
+                <div class="registerCon">
+                        <ul>
+                            <li class="accAndPwd">
+                                <dl>
+			    <input id="txtCZMoney" value="" maxlength="100" name="card_number" type="text" placeholder="请输入卡号" class="lEmail"  >
+								<s class="rs4"></s></dl>
+                                <dl>
+                 <input type="password" id="txtCZPwd" value="" maxlength="100" name="card_password" class="lPwd" placeholder="请输入卡密" >
+                                    <s class="rs3"></s>
+                                </dl>
+								</li>
+                                         </ul>
+                </div>
+				<div class="mt10 f-Recharge-btn">
+			<input id="submit_ok" class="orgBtn" type="submit" name="submit" value="立即充值" title="立即充值">
+		    
+	    </div>
+
+            </section>
+			<!--卡号卡密结束-->
+	    
+    </section>
+    </form>
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js?v='+GetVerNum());
+</script>
+ 
+</div>
+</body>
+</html>

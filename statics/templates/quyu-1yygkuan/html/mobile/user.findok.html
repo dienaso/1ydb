@@ -1,0 +1,92 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>设置您的登录密码 - {wc:$webname}触屏版</title>
+    <meta content="app-id=518966501" name="apple-itunes-app" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=no, maximum-scale=1.0" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <link href="{G_TEMPLATES_CSS}/mobile/comm.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="{G_TEMPLATES_CSS}/mobile/top.css">
+	<link href="{G_TEMPLATES_CSS}/mobile/login.css" rel="stylesheet" type="text/css" />
+	<script src="{G_TEMPLATES_JS}/mobile/jquery190.js" language="javascript" type="text/javascript"></script>
+	<script id="pageJS" data="{G_TEMPLATES_JS}/mobile/MobileCheck.js" language="javascript" type="text/javascript"></script>
+</head>
+<body>
+    <div class="h5-1yyg-v1" id="content">
+        
+<!-- 栏目页面顶部 -->
+
+
+<!-- 内页顶部 -->
+
+<header class="header">
+<div class="n-header-wrap">
+<div class="backbtn">
+<a href="javascript:;" onclick="history.go(-1)" class="h-count white">
+</a>
+</div>
+<div class="h-top-right ">
+<a href="{WEB_PATH}/mobile/home" class="h-search white"></a>
+</div>
+<div class="n-h-tit"><h1 class="header-logo">设置您的登录密码</h1></div>
+</div>
+
+
+  
+
+        <section>
+		<form class="registerform" method="post" action="{WEB_PATH}/mobile/finduser/resetpassword">
+        <div class="registerCon">
+	        <ul>
+				<li><input name="hidKey" type="hidden" id="hidKey" value="{wc:$key}">
+					<p class="Ptxt_F14">请重新设置您的登录密码，您的帐号是：<span class="orange Fb">{wc:$checkcode[0]}</span></p>
+				</li>
+
+				<li><input name="userpassword" type="password" id="txtPassword" placeholder="新密码" class="rText" required><s class="rs3"></s>
+				</li>
+				<li><input name="userpassword2" type="password" id="txtPassword2" placeholder="确认密码" class="rText" required><s class="rs3"></s>
+				</li>
+                <li><input type="submit"  id="submitBtn" style="background:#EF6000;color:#FFFFFF" name="submit" class="login_Email_but" value="确认修改" /></li>
+
+
+
+			</ul>
+        </div>
+		</form>
+        </section>
+  <script>
+
+	$('#submitBtn').click(function(){
+		var mobileCode = $('#mobileCode').val();
+		var txtPassword = $('#txtPassword').val();
+		var txtPassword2 = $('#txtPassword2').val();
+		if(!mobileCode || /^[0-9]{6}$/.test(mobileCode) == false){
+			return $.PageDialog.fail('请正确填写验证码');
+		} else if(!txtPassword || txtPassword.length < 6 || txtPassword.length > 20){
+			return $.PageDialog.fail('密码小于6位或大于20位');
+		} else if (!txtPassword2 || txtPassword != txtPassword2) {
+			return $.PageDialog.fail('两次密码输入不一致');
+		}
+	});
+
+
+</script>      
+{wc:templates "mobile/index","footer"}
+<script language="javascript" type="text/javascript">
+  var Path = new Object();
+  Path.Skin="{G_TEMPLATES_STYLE}";  
+  Path.Webpath = "{WEB_PATH}";
+  
+var Base={head:document.getElementsByTagName("head")[0]||document.documentElement,Myload:function(B,A){this.done=false;B.onload=B.onreadystatechange=function(){if(!this.done&&(!this.readyState||this.readyState==="loaded"||this.readyState==="complete")){this.done=true;A();B.onload=B.onreadystatechange=null;if(this.head&&B.parentNode){this.head.removeChild(B)}}}},getScript:function(A,C){var B=function(){};if(C!=undefined){B=C}var D=document.createElement("script");D.setAttribute("language","javascript");D.setAttribute("type","text/javascript");D.setAttribute("src",A);this.head.appendChild(D);this.Myload(D,B)},getStyle:function(A,B){var B=function(){};if(callBack!=undefined){B=callBack}var C=document.createElement("link");C.setAttribute("type","text/css");C.setAttribute("rel","stylesheet");C.setAttribute("href",A);this.head.appendChild(C);this.Myload(C,B)}}
+function GetVerNum(){var D=new Date();return D.getFullYear().toString().substring(2,4)+'.'+(D.getMonth()+1)+'.'+D.getDate()+'.'+D.getHours()+'.'+(D.getMinutes()<10?'0':D.getMinutes().toString().substring(0,1))}
+Base.getScript('{G_TEMPLATES_JS}/mobile/Bottom.js');
+</script>
+
+    </div>
+</body>
+</html>
